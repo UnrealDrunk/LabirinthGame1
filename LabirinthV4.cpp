@@ -74,12 +74,9 @@ public:
 		else {
 
 			for (int i = 0; i < rows; i++)
-			{
 				for (int j = 0; j < cols; j++)
-				{
 					fin >> Arr[i][j];
-				}
-			}
+				
 		}
 		fin.close();
 
@@ -97,15 +94,12 @@ public:
 		{
 			cout << "Error! File was not opened" << endl;
 		}
-		else {
+		else 
+		{
 
 			for (int i = 0; i < rows; i++)
-			{
 				for (int j = 0; j < cols; j++)
-				{
 					fin >> Arr[i][j];
-				}
-			}
 		}
 		fin.close();
 
@@ -123,20 +117,39 @@ public:
 		{
 			cout << "Error! File was not opened" << endl;
 		}
-		else {
+		else 
+		{
 
 			for (int i = 0; i < rows; i++)
-			{
 				for (int j = 0; j < cols; j++)
-				{
 					fin >> Arr[i][j];
-				}
-			}
 		}
 		fin.close();
 
 	}
 
+	void ReadLevel4()
+	{
+
+		int rows = 24; int cols = 24;
+		//Заполнение матрицы значениями из файла
+		string path = "Matrix4.txt";
+		ifstream fin;
+		fin.open(path);
+		if (!fin.is_open())
+		{
+			cout << "Error! File was not opened" << endl;
+		}
+		else 
+		{
+
+			for (int i = 0; i < rows; i++)
+				for (int j = 0; j < cols; j++)
+					fin >> Arr[i][j];
+		}
+		fin.close();
+
+	}
 
 
 
@@ -285,8 +298,6 @@ public:
 				if (Arr[i][j] == start)
 					HeroCoords = Vector2(j, i);
 		
-		
-
 	}
 
 
@@ -294,10 +305,7 @@ public:
 
 	void PrepareToRun()
 	{
-		if(level == 1)
-			system("color 1F");
-		else if(level == 2)
-			system("color 26");
+		system("color 1F");
 		HideCursor();
 	}
 
@@ -329,6 +337,16 @@ public:
 			level++;
 		}
 		else if (score >= 100 && level == 3)
+		{
+			system("cls");
+			system("color CF");
+			score = 20;
+			ReadLevel4();
+			PrintLab();
+			CheckStartPosition();
+			level++;
+		}
+		else if (score >= 100 && level == 4)
 		{
 			running = false;
 			system("cls");
